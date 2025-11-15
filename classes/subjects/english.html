@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Class 10 – English | Partap Classes</title>
+
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -14,35 +15,43 @@
       overflow-x:hidden;
     }
 
-    /* Glow particles */
+    /* Floating particles */
     .particles div {
       position:absolute;
-      width:6px;height:6px;
+      width:6px;
+      height:6px;
       background:white;
       opacity:0.25;
       border-radius:50%;
       animation: floatUp 12s linear infinite;
     }
-    @keyframes floatUp { from{transform:translateY(110vh);} to{transform:translateY(-20vh);} }
 
-    /* Header */
+    @keyframes floatUp {
+      from { transform:translateY(110vh); }
+      to   { transform:translateY(-20vh); }
+    }
+
     h1 {
       font-size:42px;
       text-align:center;
       margin-top:40px;
-      background: linear-gradient(90deg,#fff,#9cb3ff);
+      background:linear-gradient(90deg, #fff, #9cb3ff);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
-      animation: glow 4s infinite;
+      animation:glow 4s infinite;
     }
-    @keyframes glow { 0%,100%{filter:drop-shadow(0 0 6px #fff6);} 50%{filter:drop-shadow(0 0 16px #fff);} }
 
-    .subtitle { text-align:center; opacity:0.7; margin-top:-10px; }
+    @keyframes glow {
+      0%,100% { filter:drop-shadow(0 0 6px #ffffff66); }
+      50% { filter:drop-shadow(0 0 16px #ffffffdd); }
+    }
 
-    /* Lesson cards */
+    .subtitle { text-align:center; opacity:0.75; margin-top:-10px; font-size:18px; }
+
+    /* Lesson Grid */
     .lesson-grid {
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
       gap:25px;
       padding:40px;
     }
@@ -54,112 +63,197 @@
       text-align:center;
       font-size:18px;
       cursor:pointer;
-      transition:0.3s;
+      transition:0.25s ease;
       border:1px solid rgba(255,255,255,0.1);
       position:relative;
       overflow:hidden;
+      font-weight:600;
     }
-    .lesson-card:hover { transform:scale(1.05); box-shadow:0 10px 25px #0007; }
-    .lesson-card span.icon { font-size:28px; display:block; margin-bottom:8px; }
 
-    /* Modal */
+    .lesson-card:hover {
+      transform:scale(1.05);
+      box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .lesson-card span.icon {
+      font-size:30px;
+      display:block;
+      margin-bottom:10px;
+    }
+
+    /* Modal Background */
     .modal {
       display:none;
       position:fixed;
       top:0; left:0;
       width:100%; height:100%;
-      background:#000c;
+      background:#000000aa;
       backdrop-filter:blur(5px);
       justify-content:center;
       align-items:center;
+      z-index:10;
     }
+
     .modal-box {
       background:#111827;
       padding:25px;
-      width:90%; max-width:450px;
+      width:90%;
+      max-width:450px;
       border-radius:16px;
       text-align:center;
       border:1px solid #ffffff22;
+      animation:pop 0.4s ease;
     }
-    .modal-btn {
-      display:inline-block;
-      padding:10px 18px;
-      border-radius:10px;
-      background:linear-gradient(90deg,#4facfe,#00f2fe);
-      color:#000;
-      text-decoration:none;
-      font-weight:700;
-      margin-top:12px;
-    }
-    .close { cursor:pointer; margin-top:15px; display:inline-block; opacity:0.8; }
 
-    .back-home {
+    @keyframes pop {
+      from { transform:scale(0.8); opacity:0; }
+      to { transform:scale(1); opacity:1; }
+    }
+
+    /* Real Button */
+    .real-btn {
       display:block;
-      margin:40px auto;
-      width:max-content;
-      padding:12px 20px;
+      width:100%;
+      padding:14px 0;
+      margin-top:15px;
+      border-radius:12px;
+      background:white;
+      color:#000;
+      font-weight:800;
+      text-decoration:none;
+      font-size:18px;
+      box-shadow:0 0 20px rgba(255,255,255,0.4);
+      transition:0.25s ease;
+    }
+
+    .real-btn:hover {
+      transform:scale(1.05);
+      box-shadow:0 0 30px rgba(255,255,255,0.8);
+    }
+
+    /* Gradient Download Button */
+    .modal-btn {
+      display:block;
+      width:100%;
+      padding:14px 0;
+      margin-top:15px;
       border-radius:12px;
       background:linear-gradient(90deg,#4facfe,#00f2fe);
       text-decoration:none;
       color:#000;
       font-weight:800;
+      font-size:17px;
+      transition:0.3s;
+      box-shadow:0 0 14px #00f2fe88;
+    }
+
+    .modal-btn:hover {
+      transform:scale(1.05);
+      box-shadow:0 0 22px #00f2fecc;
+    }
+
+    .close {
+      cursor:pointer;
+      margin-top:15px;
+      display:inline-block;
+      opacity:0.7;
+      font-weight:700;
+    }
+
+    .close:hover { opacity:1; }
+
+    .back-home {
+      display:block;
+      width:max-content;
+      margin:40px auto;
+      padding:12px 20px;
+      background:linear-gradient(90deg,#4facfe,#00f2fe);
+      border-radius:12px;
+      color:#000;
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .back-home:hover {
+      transform:scale(1.06);
+      box-shadow:0 0 20px #00f2feaa;
     }
   </style>
 </head>
+
 <body>
 
+  <!-- Floating Particles -->
   <div class="particles">
-    <div style="left:10%; animation-duration:9s;"></div>
-    <div style="left:30%; animation-duration:13s;"></div>
-    <div style="left:50%; animation-duration:11s;"></div>
-    <div style="left:70%; animation-duration:8s;"></div>
-    <div style="left:90%; animation-duration:14s;"></div>
+    <div style="left:15%; animation-duration:9s;"></div>
+    <div style="left:35%; animation-duration:13s;"></div>
+    <div style="left:55%; animation-duration:11s;"></div>
+    <div style="left:75%; animation-duration:8s;"></div>
+    <div style="left:90%; animation-duration:15s;"></div>
   </div>
 
   <h1>Class 10 – English</h1>
-  <p class="subtitle">All Lessons • Notes • Explanation • Downloads</p>
+  <p class="subtitle">Complete lessons • Notes • Download • Read Online</p>
 
   <div class="lesson-grid">
-    <div class="lesson-card" onclick="openModal(1)"><span class="icon">📘</span>Lesson 1 – The Happy Prince</div>
-    <div class="lesson-card" onclick="openModal(2)"><span class="icon">📘</span>Lesson 2 – Lesson Name</div>
-    <div class="lesson-card" onclick="openModal(3)"><span class="icon">📘</span>Lesson 3 – Lesson Name</div>
-    <div class="lesson-card" onclick="openModal(4)"><span class="icon">📘</span>Lesson 4 – Lesson Name</div>
-    <div class="lesson-card" onclick="openModal(5)"><span class="icon">📘</span>Lesson 5 – Lesson Name</div>
-    <div class="lesson-card" onclick="openModal(6)"><span class="icon">📘</span>Lesson 6 – Lesson Name</div>
-    <div class="lesson-card" onclick="openModal(7)"><span class="icon">📘</span>Lesson 7 – Lesson Name</div>
-    <div class="lesson-card" onclick="openModal(8)"><span class="icon">📘</span>Lesson 8 – Lesson Name</div>
-    <div class="lesson-card" onclick="openModal(9)"><span class="icon">📘</span>Lesson 9 – Lesson Name</div>
-    <div class="lesson-card" onclick="openModal(10)"><span class="icon">📘</span>Lesson 10 – Lesson Name</div>
+
+    <div class="lesson-card" onclick="openModal(1)">
+      <span class="icon">📘</span>
+      Lesson 1 – The Happy Prince
+    </div>
+
+    <div class="lesson-card" onclick="openModal(2)"><span class="icon">📘</span>Lesson 2</div>
+    <div class="lesson-card" onclick="openModal(3)"><span class="icon">📘</span>Lesson 3</div>
+    <div class="lesson-card" onclick="openModal(4)"><span class="icon">📘</span>Lesson 4</div>
+    <div class="lesson-card" onclick="openModal(5)"><span class="icon">📘</span>Lesson 5</div>
+    <div class="lesson-card" onclick="openModal(6)"><span class="icon">📘</span>Lesson 6</div>
+    <div class="lesson-card" onclick="openModal(7)"><span class="icon">📘</span>Lesson 7</div>
+    <div class="lesson-card" onclick="openModal(8)"><span class="icon">📘</span>Lesson 8</div>
+    <div class="lesson-card" onclick="openModal(9)"><span class="icon">📘</span>Lesson 9</div>
+    <div class="lesson-card" onclick="openModal(10)"><span class="icon">📘</span>Lesson 10</div>
+
   </div>
 
-  <!-- Modal 1 with Google Drive Notes -->
+  <!-- Modal 1 -->
   <div class="modal" id="modal1">
     <div class="modal-box">
       <h2>Lesson 1 – The Happy Prince</h2>
-      <p>Download full notes below:</p>
+      <p>Choose an option below:</p>
 
-      <a class="modal-btn" href="https://drive.google.com/uc?export=download&id=1q5jqtOETjgzVE8PqJP6-fl1rU34f-R1r" target="_blank">⬇ Download Notes</a>
+      <!-- Read Online -->
+      <a class="real-btn"
+         href="https://drive.google.com/file/d/1q5jqtOETjgzVE8PqJP6-fl1rU34f-R1r/view"
+         target="_blank">
+         📖 Read Online (Preview)
+      </a>
+
+      <!-- Download -->
+      <a class="modal-btn"
+         href="https://drive.google.com/uc?export=download&id=1q5jqtOETjgzVE8PqJP6-fl1rU34f-R1r"
+         target="_blank">
+         ⬇ Download Notes
+      </a>
 
       <div class="close" onclick="closeModal(1)">✖ Close</div>
     </div>
   </div>
 
-  <!-- Other empty modals -->
-  <div class="modal" id="modal2"><div class="modal-box"><h2>Lesson 2</h2><p>Notes coming soon.</p><div class="close" onclick="closeModal(2)">✖ Close</div></div></div>
-  <div class="modal" id="modal3"><div class="modal-box"><h2>Lesson 3</h2><p>Notes coming soon.</p><div class="close" onclick="closeModal(3)">✖ Close</div></div></div>
-  <div class="modal" id="modal4"><div class="modal-box"><h2>Lesson 4</h2><p>Notes coming soon.</p><div class="close" onclick="closeModal(4)">✖ Close</div></div></div>
-  <div class="modal" id="modal5"><div class="modal-box"><h2>Lesson 5</h2><p>Notes coming soon.</p><div class="close" onclick="closeModal(5)">✖ Close</div></div></div>
-  <div class="modal" id="modal6"><div class="modal-box"><h2>Lesson 6</h2><p>Notes coming soon.</p><div class="close" onclick="closeModal(6)">✖ Close</div></div></div>
-  <div class="modal" id="modal7"><div class="modal-box"><h2>Lesson 7</h2><p>Notes coming soon.</p><div class="close" onclick="closeModal(7)">✖ Close</div></div></div>
-  <div class="modal" id="modal8"><div class="modal-box"><h2>Lesson 8</h2><p>Notes coming soon.</p><div class="close" onclick="closeModal(8)">✖ Close</div></div></div>
-  <div class="modal" id="modal9"><div class="modal-box"><h2>Lesson 9</h2><p>Notes coming soon.</p><div class="close" onclick="closeModal(9)">✖ Close</div></div></div>
-  <div class="modal" id="modal10"><div class="modal-box"><h2>Lesson 10</h2><p>Notes coming soon.</p><div class="close" onclick="closeModal(10)">✖ Close</div></div></div>
+  <!-- Other Modals -->
+  <div class="modal" id="modal2"><div class="modal-box"><h2>Lesson 2</h2><p>Notes coming soon…</p><div class="close" onclick="closeModal(2)">✖ Close</div></div></div>
+  <div class="modal" id="modal3"><div class="modal-box"><h2>Lesson 3</h2><p>Notes coming soon…</p><div class="close" onclick="closeModal(3)">✖ Close</div></div></div>
+  <div class="modal" id="modal4"><div class="modal-box"><h2>Lesson 4</h2><p>Notes coming soon…</p><div class="close" onclick="closeModal(4)">✖ Close</div></div></div>
+  <div class="modal" id="modal5"><div class="modal-box"><h2>Lesson 5</h2><p>Notes coming soon…</p><div class="close" onclick="closeModal(5)">✖ Close</div></div></div>
+  <div class="modal" id="modal6"><div class="modal-box"><h2>Lesson 6</h2><p>Notes coming soon…</p><div class="close" onclick="closeModal(6)">✖ Close</div></div></div>
+  <div class="modal" id="modal7"><div class="modal-box"><h2>Lesson 7</h2><p>Notes coming soon…</p><div class="close" onclick="closeModal(7)">✖ Close</div></div></div>
+  <div class="modal" id="modal8"><div class="modal-box"><h2>Lesson 8</h2><p>Notes coming soon…</p><div class="close" onclick="closeModal(8)">✖ Close</div></div></div>
+  <div class="modal" id="modal9"><div class="modal-box"><h2>Lesson 9</h2><p>Notes coming soon…</p><div class="close" onclick="closeModal(9)">✖ Close</div></div></div>
+  <div class="modal" id="modal10"><div class="modal-box"><h2>Lesson 10</h2><p>Notes coming soon…</p><div class="close" onclick="closeModal(10)">✖ Close</div></div></div>
 
-  <a href="index.html" class="back-home">⬅ Back to Home</a>
+  <a href="../index.html" class="back-home">⬅ Back to Home</a>
 
   <script>
-    function openModal(id){ document.getElementById('modal'+id).style.display='flex'; }
-    function closeModal(id){ document.getElementById('modal'+id).style.display='none'; }
+    function openModal(id){ document.getElementById("modal"+id).style.display="flex"; }
+    function closeModal(id){ document.getElementById("modal"+id).style.display="none"; }
   </script>
 
 </body>
