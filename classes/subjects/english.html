@@ -15,7 +15,6 @@
       overflow-x:hidden;
     }
 
-    /* Floating particles */
     .particles div {
       position:absolute;
       width:6px;
@@ -48,7 +47,6 @@
 
     .subtitle { text-align:center; opacity:0.75; margin-top:-10px; font-size:18px; }
 
-    /* Lesson Grid */
     .lesson-grid {
       display:grid;
       grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
@@ -65,7 +63,6 @@
       cursor:pointer;
       transition:0.25s ease;
       border:1px solid rgba(255,255,255,0.1);
-      position:relative;
       overflow:hidden;
       font-weight:600;
     }
@@ -81,7 +78,6 @@
       margin-bottom:10px;
     }
 
-    /* Modal Background */
     .modal {
       display:none;
       position:fixed;
@@ -110,7 +106,6 @@
       to { transform:scale(1); opacity:1; }
     }
 
-    /* Real Button */
     .real-btn {
       display:block;
       width:100%;
@@ -131,7 +126,6 @@
       box-shadow:0 0 30px rgba(255,255,255,0.8);
     }
 
-    /* Gradient Download Button */
     .modal-btn {
       display:block;
       width:100%;
@@ -183,7 +177,6 @@
 
 <body>
 
-  <!-- Floating Particles -->
   <div class="particles">
     <div style="left:15%; animation-duration:9s;"></div>
     <div style="left:35%; animation-duration:13s;"></div>
@@ -214,22 +207,20 @@
 
   </div>
 
-  <!-- Modal 1 -->
+  <!-- Modal 1 Updated -->
   <div class="modal" id="modal1">
     <div class="modal-box">
       <h2>Lesson 1 – The Happy Prince</h2>
       <p>Choose an option below:</p>
 
-      <!-- Read Online -->
       <a class="real-btn"
-         href="https://drive.google.com/file/d/1c9UG_PJ3ppY78V-jTkIJWTkijsP-UVhZ/view?usp=sharing"
+         href="https://drive.google.com/file/d/1c9UG_PJ3ppY78V-jTkIJWTkijsP-UVhZ/view"
          target="_blank">
          📖 Read Online (Preview)
       </a>
 
-      <!-- Download -->
       <a class="modal-btn"
-         href="https://drive.google.com/file/d/1c9UG_PJ3ppY78V-jTkIJWTkijsP-UVhZ/view?usp=sharing"
+         href="https://drive.google.com/uc?export=download&id=1c9UG_PJ3ppY78V-jTkIJWTkijsP-UVhZ"
          target="_blank">
          ⬇ Download Notes
       </a>
