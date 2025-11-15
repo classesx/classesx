@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Partap Classes — Home</title>
+  <meta name="description" content="Partap Classes: Notes & classes for grades 6 to 10. Responsive design with 3D header animation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Google Fonts Loaded -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Roboto:wght@300;400;700&family=Nunito:wght@300;400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#000; --card:#111; --accent:#fff; --muted:#ccc; --glass: rgba(255,255,255,0.08);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Inter','Roboto','Nunito','Lato',system-ui,Arial;background:linear-gradient(180deg,#071023 0%, #071a2a 100%);color:#e6eef8;min-height:100vh}
+    header{position:relative;overflow:hidden;padding:28px 24px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1200px;margin:0 auto}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:800;color:#002}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px}
+    .cta{background:linear-gradient(90deg,var(--accent),#60a5fa);padding:10px 14px;border-radius:10px;color:#002;font-weight:600}
+
+    .hero{max-width:1200px;margin:24px auto 40px;display:grid;grid-template-columns:1fr 480px;gap:28px;align-items:center;padding:24px}
+    .hero-left{backdrop-filter:blur(6px);background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:26px;border-radius:16px}
+    h1{font-size:clamp(1.6rem,3.5vw,2.6rem);margin:0 0 8px}
+    p.lead{color:var(--muted);margin:0 0 16px}
+    .grades{display:flex;gap:10px;flex-wrap:wrap}
+    .grade{background:var(--glass);padding:10px 12px;border-radius:10px;color:var(--accent);font-weight:600}
+    .features{display:flex;gap:12px;margin-top:16px}
+    .feature{background:#021124;padding:12px;border-radius:10px;flex:1}
+
+    .hero-right{height:360px;border-radius:16px;position:relative;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    #three-canvas{width:100%;height:100%;display:block}
+
+    .notes{max-width:1200px;margin:0 auto;padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .note-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px}
+    .note-card h3{margin:0 0 8px}
+    .note-card p{margin:0 0 12px;color:var(--muted)}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);text-decoration:none;color:var(--accent);font-weight:600}
+
+    footer{max-width:1200px;margin:36px auto;padding:18px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+
+    /* responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .hero-right{height:320px}
+    }
+    @media (max-width:520px){
+      .nav{padding:0 12px}
+      .hero{padding:12px}
+      .hero-right{height:260px}
+    }
+
+    /* small animated accent */
+    .badge{padding:6px 10px;border-radius:999px;background:rgba(125,211,252,0.08);color:var(--accent);display:inline-flex;align-items:center;gap:8px}
+  </style>
+  <style>
+    /* Enhanced 3D flying books animation */
+    @keyframes flyBooks {
+      0% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+      50% { transform: translateY(-25px) rotateX(20deg) rotateY(20deg); }
+      100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+    }
+    .hero-graphic { animation: flyBooks 6s infinite ease-in-out; }
+
+    /* Neon hover effect */
+    .class-card:hover, .note-card:hover {
+      box-shadow: 0 0 25px rgba(255,255,255,0.6);
+      transform: scale(1.04);
+      transition: 0.3s ease-in-out;
+    }
+
+    /* Dark mode toggle */
+    .dark-mode {
+      --bg: #000;
+      --text: #fff;
+      --muted: #bbb;
+      background: var(--bg);
+      color: var(--text);
+    }
+  </style>
+  <style>
+    /* Logo hover glow animation */
+    .logo img:hover {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 15px rgba(255,255,255,0.8));
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <button id="darkToggle" style="margin-right:16px;padding:6px 12px;border-radius:6px;border:1px solid var(--muted);background:transparent;color:var(--text);cursor:pointer;">🌙 Dark Mode</button>
+      <div style="display:flex;gap:12px;font-size:18px;margin-right:12px">
+        <!-- Header Social Icons (SVG) -->
+        <a href="#" style="color:var(--muted)" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 2c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.3-3 3-3zm4.8-.2c-.4 0-.8.3-.8.8 0 .4.3.8.8.8.4 0 .8-.3.8-.8 0-.5-.4-.8-.8-.8z"/></svg>
+        </a>
+        <a href="#" style="color:var(--muted)" aria-label="YouTube">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M10 15l5.2-3L10 9v6zm12-3c0-2.5-.2-4.1-.6-5-.3-.7-.8-1.3-1.5-1.6C18.7 5 12 5 12 5s-6.7 0-7.9.4c-.7.3-1.2.9-1.5 1.6C2.2 7.9 2 9.5 2 12s.2 4.1.6 5c.3.7.8 1.3 1.5 1.6C5.3 19 12 19 12 19s6.7 0 7.9-.4c.7-.3 1.2-.9 1.5-1.6.4-.9.6-2.5.6-5z"/></svg>
+        </a>
+        <a href="#" style="color:var(--muted)" aria-label="X">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h4l-9 10 9 10h-4l-7-8-7 8H2l9-10L2 2h4l7 8 7-8z"/></svg>
+        </a>
+        <a href="#" style="color:var(--muted)" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.7 9.1 8.5 9.9v-7h-2.5v-3h2.5V9.5c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.8l-.4 3h-2.4v7C18.3 21.1 22 17 22 12z"/></svg>
+        </a>
+      </div>
+      <div class="brand">
+        <div class="logo" style="display:flex;align-items:center;gap:10px;">
+  <img src="downloads/logo.png" alt="Partap Classes Logo" style="height:48px;border-radius:50%;transition:0.3s ease;filter:drop-shadow(0 0 6px rgba(255,255,255,0.4));">
+  <div>
+    <strong>Partap Classes</strong><br>
+    <span style="font-size:12px;opacity:0.7;">Grades 6 — 10 • Notes & Live Classes</span>
+  </div>
+</div>
+        <div>
+          <div style="font-weight:700">Partap Classes</div>
+          <div style="font-size:12px;color:var(--muted)">Grades 6 — 10 • Notes & Live Classes</div>
+        </div>
+      </div>
+      <div>
+        <a href="#notes">Notes</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="cta">Contact</a>
+      </div>
+    </div>
+
+    <section class="hero" aria-label="Hero">
+      <div class="hero-left">
+        <div class="badge">New • Updated Notes</div>
+        <h1 style="letter-spacing:1px; font-weight:800;">✨ Partap Classes — Notes & Coaching for Grades 6 to 10</h1>
+        <p class="lead" style="font-size:1.05rem;">📘 Clear notes, short video lessons, and weekly doubt-clearing sessions. Responsive, mobile-first layout with a lightweight 3D header animation.</p>
+
+        <div class="grades" aria-hidden>
+          <div class="grade">Grade 6</div>
+          <div class="grade">Grade 7</div>
+          <div class="grade">Grade 8</div>
+          <div class="grade">Grade 9</div>
+          <div class="grade">Grade 10</div>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <strong>Notes</strong>
+            <div style="color:var(--muted);font-size:13px">Downloadable, printable</div>
+          </div>
+          <div class="feature">
+            <strong>Live Classes</strong>
+            <div style="color:var(--muted);font-size:13px">Small batches</div>
+          </div>
+          <div class="feature">
+            <strong>Doubt Sessions</strong>
+            <div style="color:var(--muted);font-size:13px">Weekly</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <!-- 3D canvas -->
+        <canvas id="three-canvas"></canvas>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section id="notes" class="notes">
+  <article class="note-card">
+    <h3>Class 6</h3>
+    <p>📚 View Subjects</p>
+    <a class="btn" href="classes/class6.html">Open</a>
+  </article>
+
+  <article class="note-card">
+    <h3>Class 7</h3>
+    <p>📚 View Subjects</p>
+    <a class="btn" href="classes/class7.html">Open</a>
+  </article>
+
+  <article class="note-card">
+    <h3>Class 8</h3>
+    <p>📚 View Subjects</p>
+    <a class="btn" href="classes/class8.html">Open</a>
+  </article>
+
+  <article class="note-card">
+    <h3>Class 9</h3>
+    <p>📚 View Subjects</p>
+    <a class="btn" href="classes/class9.html">Open</a>
+  </article>
+
+  <article class="note-card">
+    <h3>Class 10</h3>
+    <p>📚 View Subjects</p>
+    <a class="btn" href="classes/class10.html">Open</a>
+  </article>
+
+  <article class="note-card">
+    <h3>Class 11</h3>
+    <p>📚 View Subjects</p>
+    <a class="btn" href="classes/class11.html">Open</a>
+  </article>
+
+  <article class="note-card">
+    <h3>Class 12</h3>
+    <p>📚 View Subjects</p>
+    <a class="btn" href="classes/class12.html">Open</a>
+  </article>
+</section>
+    <section id="about" style="max-width:1200px;margin:32px auto;padding:24px;background:transparent;">
+      <div style="display:flex;gap:18px;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px;">
+          <h3>About Partap Classes</h3>
+          <p style="color:var(--muted)">Partap Classes offers structured notes and guided learning for students in grades 6–10. The content here is a demo — replace the notes links with your actual PDFs and update contact details.</p>
+        </div>
+        <div style="flex:1;min-width:260px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px;">
+          <h3>Why this site?</h3>
+          <ul style="color:var(--muted);margin:8px 0 0;padding-left:18px">
+            <li>Fast and responsive for phones — students can access notes quickly.</li>
+            <li>Scales easily to add videos, paid content, or a login system.</li>
+            <li>3D header makes it modern and engaging without slowing down the site.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="max-width:1200px;margin:0 auto;padding:24px">
+      <div style="background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px">
+        <h3>Contact / Enroll</h3>
+        <form onsubmit="event.preventDefault();alert('Thank you! Replace this with real form handling.');">
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <input required placeholder="Name" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit"/>
+            <input required placeholder="Phone / Email" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit"/>
+          </div>
+          <textarea placeholder="Message" style="width:100%;margin-top:12px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit"></textarea>
+          <div style="margin-top:12px"><button class="btn" type="submit">Send</button></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© Partap Classes</div>
+    <div style="display:flex;gap:12px;font-size:20px">
+      <a href="#" style="text-decoration:none;color:var(--muted)">📘</a>
+      <a href="#" style="text-decoration:none;color:var(--muted)">📚</a>
+      <a href="#" style="text-decoration:none;color:var(--muted)">📖</a>
+      <a href="#" style="text-decoration:none;color:var(--muted)">📘</a>
+      <!-- Social Icons -->
+      <a href="#" style="text-decoration:none;color:var(--muted)">📸</a>
+      <a href="#" style="text-decoration:none;color:var(--muted)">▶️</a>
+      <a href="#" style="text-decoration:none;color:var(--muted)">𝕏</a>
+      <a href="#" style="text-decoration:none;color:var(--muted)">📘</a>
+    </div>
+  </footer>
+
+  <!-- Three.js 3D animation (lightweight scene) -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script>
+    // Basic responsive three.js scene: rotating torus + particle field
+    const canvas = document.getElementById('three-canvas');
+    const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    camera.position.set(0,0,6);
+
+    const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambient);
+    const dir = new THREE.DirectionalLight(0xffffff, 0.6);
+    dir.position.set(5,5,5);
+    scene.add(dir);
+
+    // torus
+    // Replace torus with floating books (simple boxes)
+const bookGeom = new THREE.BoxGeometry(1, 1.4, 0.2);
+const bookMat = new THREE.MeshStandardMaterial({color:0xffffff, roughness:0.3, metalness:0.1});
+const books = [];
+for(let i=0;i<6;i++){
+  const b = new THREE.Mesh(bookGeom, bookMat);
+  b.position.set((Math.random()-0.5)*4, (Math.random()-0.5)*2, (Math.random()-0.5)*3);
+  b.rotation.set(Math.random(), Math.random(), Math.random());
+  scene.add(b);
+  books.push(b);
+}
+
+    // subtle particle field
+    const particles = new THREE.BufferGeometry();
+    const count = 300;
+    const positions = new Float32Array(count*3);
+    for(let i=0;i<count;i++){
+      positions[i*3 + 0] = (Math.random()-0.5)*10;
+      positions[i*3 + 1] = (Math.random()-0.5)*6;
+      positions[i*3 + 2] = (Math.random()-0.5)*8;
+    }
+    particles.setAttribute('position', new THREE.BufferAttribute(positions,3));
+    const pMat = new THREE.PointsMaterial({size:0.04, transparent:true, opacity:0.8});
+    const pointCloud = new THREE.Points(particles, pMat);
+    scene.add(pointCloud);
+
+    function resize(){
+      const rect = canvas.getBoundingClientRect();
+      const w = Math.max(100, rect.width);
+      const h = Math.max(100, rect.height);
+      renderer.setSize(w,h);
+      camera.aspect = w/h;
+      camera.updateProjectionMatrix();
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    let t = 0;
+    function animate(){
+      t += 0.01;
+      books.forEach((b,i)=>{
+  b.rotation.x += 0.01 + i*0.001;
+  b.rotation.y += 0.008;
+  b.position.y += Math.sin(t + i) * 0.002;
+});
+pointCloud.rotation.y = -t*0.03;
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // pause rendering when not visible (simple optimization)
+    document.addEventListener('visibilitychange', ()=>{
+      if(document.hidden){ renderer.setAnimationLoop(null); }
+      else{ animate(); }
+    });
+  </script>
+  <script>
+    // Dark mode toggle script
+    const toggle = document.getElementById('darkToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
+
+  <!-- LOGO DOWNLOAD LINK -->
+  <a href="logo.png" download style="position:fixed;bottom:20px;right:20px;color:var(--text);font-size:14px;">⬇️ Download Logo</a>
+</body>
+</html>
